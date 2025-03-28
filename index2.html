@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Siwalima - Portal Berita Terbesar di Maluku</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .thumbnail img {
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%; /* Ensures uniform size for thumbnails */
+            height: 100px; /* Fixed height for all thumbnails */            
+            border-radius: 5px; /* Optional: Rounded corners for better aesthetics */
+            border: 2px solid transparent; /* Default: No border */
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+
+        .thumbnail img.selected {
+            border: 3px solid red; /* Highlight selected image */
+}
+        .main-image {
+            width: 100%;
+            height: 500px; /* Fixed height for consistency */            
+            border-radius: 5px; /* Optional */
+        }
+    </style>
 </head>
 <body>
     <div class="p-5 mt-3">
@@ -47,8 +69,8 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-10">
-                        <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100" alt="Berita Utama">                        
+                        <img id="mainImage" src="toa-heftiba-aqTMs90bXQI-unsplash.jpg" 
+                            class="img-fluid main-image" alt="Berita Utama">                        
                         <div class="flex-grow-1 fw-bold">
                             <h5>
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
@@ -57,32 +79,32 @@
                         </div>
                         <strong class="text-danger">ONLINE</strong>                        
                     </div>
+                    
                     <!-- Headline Carousel -->
-                    <div class="col-md-2 p-0">
-                        <div class="p-1 w-100 align-self-stretch bg-light">
-                            <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100 mt-2" alt="Berita Utama">
+                    <div class="col-md-2 p-0 bg-light" style="border-radius: 10px;">
+                        <div class="col-12 p-1 w-100 align-self-stretch thumbnail">
+                            <img src="toa-heftiba-aqTMs90bXQI-unsplash.jpg" 
+                            class="img-fluid w-100 mt-2" alt="Berita Utama" onclick="changeImage(this)">
                         </div>
-                        <div class="p-1 w-100 align-self-stretch bg-light">
-                            <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100 mt-2" alt="Berita Utama">
+                        <div class="col-12 p-1 w-100 align-self-stretch thumbnail">
+                            <img src="myznik-egor-EdBWvVH5JaM-unsplash.jpg" 
+                            class="img-fluid w-100 mt-2" alt="Berita Utama" onclick="changeImage(this)">
                         </div>
-                        <div class="p-1 w-100 align-self-stretch bg-light">
-                            <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100 mt-2" alt="Berita Utama">
+                        <div class="col-12 p-1 w-100 align-self-stretch thumbnail">
+                            <img src="ian-maina-xtFNQz20ft8-unsplash.jpg" 
+                            class="img-fluid w-100 mt-2" alt="Berita Utama" onclick="changeImage(this)">
                         </div>
-                        <div class="p-1 w-100 align-self-stretch bg-light">
-                            <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100 mt-2" alt="Berita Utama">
+                        <div class="col-12 p-1 w-100 align-self-stretch thumbnail">
+                            <img src="absolutvision-WYd_PkCa1BY-unsplash.jpg" 
+                            class="img-fluid w-100 mt-2" alt="Berita Utama" onclick="changeImage(this)">
                         </div>
-                        <div class="p-1 w-100 align-self-stretch bg-light">
-                            <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" 
-                            class="img-fluid w-100 mt-2" alt="Berita Utama">
+                        <div class="col-12 p-1 w-100 align-self-stretch thumbnail">
+                            <img src="norbert-braun-rbUmyKlVyZU-unsplash.jpg" 
+                            class="img-fluid w-100 mt-2" alt="Berita Utama" onclick="changeImage(this)">
                         </div>                
                     </div>                    
                 </div>                
-            </div>
-            
+            </div>            
 
             <div class="col-md-4">
                 <div class="bannerHL" style="max-width: 100%;">
@@ -90,6 +112,8 @@
                 </div>  
             </div>
         </section>
+
+        <hr>
 
         <section class="row mt-3">
             <h3 class="fw-bold text-danger">Populer</h3>                
@@ -155,6 +179,8 @@
                 <img src="iklan2.jpg" alt="ads-1" class="img-fluid">
             </div>
         </section>
+
+        <hr>
 
         <!-- Hukum & Kriminal, Opini, Politik -->
         <section class="row mt-3 d-flex align-items-stretch">            
@@ -283,6 +309,8 @@
                 </div>                
             </div>
         </section>
+
+        <hr>
         
         <!-- Politik , Iklan 3, & Dari Netizen -->
         <section class="row mt-3 d-flex align-items-stretch">
@@ -442,12 +470,16 @@
             </div>
         </section>
 
+        <hr>
+
         <!-- Iklan 4 -->
         <section>
             <div class="mt-3 col-md-12 d-flex flex-column text-warning text-center">
                 <img src="iklan2.jpg" alt="ads-1" class="img-fluid">
             </div>
         </section>
+
+        <hr>
 
         <!-- Mata-mata, Video Pilihan, Kesehatan, Sport -->
         <section class="row mt-3 justify-content-center">
@@ -502,6 +534,8 @@
             </div>
         </section>
 
+        <hr>
+        
         <section class="row mt-3">
             <div class="col-md-12">
                 <div>
@@ -571,6 +605,8 @@
                 </div>                
             </div>            
         </section>
+
+        <hr>
 
         <section class="row mt-3">            
             <div>
@@ -695,6 +731,39 @@
             </div>            
         </footer>
     </div>
+
+    <script>
+        let thumbnails = document.querySelectorAll('.thumbnail img');
+        let mainImage = document.getElementById('mainImage');
+        let index = 0;
+    
+        function changeImage(element) {
+            mainImage.src = element.src;
+            index = Array.from(thumbnails).indexOf(element); // Update index to match clicked image
+
+            // Remove 'selected' class from all thumbnails
+            thumbnails.forEach(img => img.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked thumbnail
+            element.classList.add('selected');
+        }
+    
+        function autoChangeImage() {
+            // Remove 'selected' class from all thumbnails
+            thumbnails.forEach(img => img.classList.remove('selected'));
+
+            index = (index + 1) % thumbnails.length; // Loop through images
+            mainImage.src = thumbnails[index].src;
+
+            // Add 'selected' class to the active thumbnail
+            thumbnails[index].classList.add('selected');
+        }
+    
+        setInterval(autoChangeImage, 5000); // Change image every 5 seconds
+
+        // Set the first image as selected initially
+        thumbnails[0].classList.add('selected');
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

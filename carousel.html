@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auto Image Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .thumbnail img {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+        .main-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Main Image Display -->
+        <div class="col-md-8">
+            <img id="mainImage" src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="img-fluid main-image" alt="Main Image">
+        </div>
+        
+        <!-- Thumbnail List -->
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-12 mb-2 thumbnail">
+                    <img src="iklan2.jpg" class="img-fluid" onclick="changeImage(this)">
+                </div>
+                <div class="col-12 mb-2 thumbnail">
+                    <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="img-fluid" onclick="changeImage(this)">
+                </div>
+                <div class="col-12 mb-2 thumbnail">
+                    <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="img-fluid" onclick="changeImage(this)">
+                </div>
+                <div class="col-12 mb-2 thumbnail">
+                    <img src="roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="img-fluid" onclick="changeImage(this)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let thumbnails = document.querySelectorAll('.thumbnail img');
+    let mainImage = document.getElementById('mainImage');
+    let index = 0;
+
+    function changeImage(element) {
+        mainImage.src = element.src;
+        index = Array.from(thumbnails).indexOf(element); // Update index to match clicked image
+    }
+
+    function autoChangeImage() {
+        index = (index + 1) % thumbnails.length; // Loop through images
+        mainImage.src = thumbnails[index].src;
+    }
+
+    setInterval(autoChangeImage, 5000); // Change image every 5 seconds
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
